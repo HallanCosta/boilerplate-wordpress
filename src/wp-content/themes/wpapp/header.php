@@ -3,7 +3,7 @@
 
     $titleDefault = trim(get_bloginfo('name'));
     $descriptionDefault = trim(get_bloginfo('description'));
-    $image_default = 'REAL_FAVICON_IMAGE';
+    $imageDefault = 'REAL_FAVICON_IMAGE';
     
     $metadata = [
         'title' => $titleDefault,
@@ -53,12 +53,12 @@
         'opengraph' => [
             'title' => !empty($seoOpengraph['title']) ? $seoOpengraph['title'] : $titleDefault,
             'description' => !empty($seoOpengraph['description']) ? $seoOpengraph['description'] : $descriptionDefault,
-            'image' => !empty($seoOpengraphImage) ? $seoOpengraphImage : $image_default,
+            'image' => !empty($seoOpengraphImage) ? $seoOpengraphImage : $imageDefault,
         ],
         'twitter' => [
             'title' => !empty($seoTwitter['title']) ? $seoTwitter['title'] : $titleDefault,
             'description' => !empty($seoTwitter['description']) ? $seoTwitter['description'] : $descriptionDefault,
-            'image' => !empty($seoTwitterImage) ? $seoTwitterImage : $image_default,
+            'image' => !empty($seoTwitterImage) ? $seoTwitterImage : $imageDefault,
         ],
         'permalink' => $seoPermalink,
         'type' => $seoType
