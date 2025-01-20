@@ -1,41 +1,41 @@
 <?php 
-    $post_id = get_the_ID();
+    $postId = get_the_ID();
 
-    $title_default = trim(get_bloginfo('name'));
-    $description_default = trim(get_bloginfo('description'));
+    $titleDefault = trim(get_bloginfo('name'));
+    $descriptionDefault = trim(get_bloginfo('description'));
     $image_default = 'REAL_FAVICON_IMAGE';
     
     $metadata = [
-        'title' => $title_default,
-        'description' => $description_default
+        'title' => $titleDefault,
+        'description' => $descriptionDefault
     ];
 
     if (is_plugin_active( 'smartcrawl-seo/wpmu-dev-seo.php' )) {
-        $seo_title = get_post_meta($post_id , '_wds_title', true); // Smartcrawl SEO Title
-        $seo_description = get_post_meta($post_id , '_wds_metadesc', true); // Smartcrawl SEO Site
-        $seo_permalink = get_permalink($post_id);
-        $seo_type = is_single() ? 'article' : 'website';
+        $seoTitle = get_post_meta($postId , '_wds_title', true); // Smartcrawl SEO Title
+        $seoDescription = get_post_meta($postId , '_wds_metadesc', true); // Smartcrawl SEO Site
+        $seoPermalink = get_permalink($postId);
+        $seoType = is_single() ? 'article' : 'website';
 
         // Facebook
-        $seo_opengraph = get_post_meta($post_id , '_wds_opengraph', true); // Smartcrawl SEO Facebook
-        $seo_opengraph_image_id = '';
-        $seo_opengraph_image_exist = '';
-        $seo_opengraph_image = '';
-        if (!empty($seo_opengraph)) {
-            $seo_opengraph_image_id = isset($seo_opengraph['images']) ? $seo_opengraph['images'][0] : null;
-            $seo_opengraph_image_exist = wp_get_attachment_image_url($seo_opengraph_image_id, 'thumbnail');
-            $seo_opengraph_image =  $seo_opengraph_image_exist ? wp_get_attachment_image_url($seo_opengraph_image_id, 'thumbnail') : 'URL_DEFAULT';
+        $seoOpengraph = get_post_meta($postId , '_wds_opengraph', true); // Smartcrawl SEO Facebook
+        $seoOpengraphImageId = '';
+        $seoOpengraphImageExist = '';
+        $seoOpengraphImage = '';
+        if (!empty($seoOpengraph)) {
+            $seoOpengraphImageId = isset($seoOpengraph['images']) ? $seoOpengraph['images'][0] : null;
+            $seoOpengraphImageExist = wp_get_attachment_image_url($seoOpengraphImageId, 'thumbnail');
+            $seoOpengraphImage =  $seoOpengraphImageExist ? wp_get_attachment_image_url($seoOpengraphImageId, 'thumbnail') : 'URL_DEFAULT';
         }
 
         // Twitter
-        $seo_twitter = get_post_meta($post_id , '_wds_twitter', true); // Smartcrawl SEO Twitter
-        $seo_twitter_image_id = '';
-        $seo_twitter_image_exist = '';
-        $seo_twitter_image = '';
-        if (!empty($seo_twitter)) {
-            $seo_twitter_image_id = isset($seo_twitter_image['images']) ? $seo_twitter_image['images'][0] : null; // Smartcrawl SEO
-            $seo_twitter_image_exist = wp_get_attachment_image_url($seo_twitter_image_id, 'thumbnail');
-            $seo_twitter_image = $seo_twitter_image_exist ? wp_get_attachment_image_url($seo_twitter_image_id, 'thumbnail') : '';
+        $seoTwitter = get_post_meta($postId , '_wds_twitter', true); // Smartcrawl SEO Twitter
+        $seoTwitterImageId = '';
+        $seoTwitterImageExist = '';
+        $seoTwitterImage = '';
+        if (!empty($seoTwitter)) {
+            $seoTwitterImageId = isset($seoTwitterImage['images']) ? $seoTwitterImage['images'][0] : null; // Smartcrawl SEO
+            $seoTwitterImageExist = wp_get_attachment_image_url($seoTwitterImageId, 'thumbnail');
+            $seoTwitterImage = $seoTwitterImageExist ? wp_get_attachment_image_url($seoTwitterImageId, 'thumbnail') : '';
         }
     }
 
@@ -48,20 +48,20 @@
     // Tamanho recomendado: 1200 x 630 pixels
     // Tamanho mínimo: 600 x 315 pixels
     $metadata = [
-        'title' => !empty($seo_title) ? $seo_title : $title_default,
-        'description' => !empty($seo_description) ? $seo_description : $description_default,
+        'title' => !empty($seoTitle) ? $seoTitle : $titleDefault,
+        'description' => !empty($seoDescription) ? $seoDescription : $descriptionDefault,
         'opengraph' => [
-            'title' => !empty($seo_opengraph['title']) ? $seo_opengraph['title'] : $title_default,
-            'description' => !empty($seo_opengraph['description']) ? $seo_opengraph['description'] : $description_default,
-            'image' => !empty($seo_opengraph_image) ? $seo_opengraph_image : $image_default,
+            'title' => !empty($seoOpengraph['title']) ? $seoOpengraph['title'] : $titleDefault,
+            'description' => !empty($seoOpengraph['description']) ? $seoOpengraph['description'] : $descriptionDefault,
+            'image' => !empty($seoOpengraphImage) ? $seoOpengraphImage : $image_default,
         ],
         'twitter' => [
-            'title' => !empty($seo_twitter['title']) ? $seo_twitter['title'] : $title_default,
-            'description' => !empty($seo_twitter['description']) ? $seo_twitter['description'] : $description_default,
-            'image' => !empty($seo_twitter_image) ? $seo_twitter_image : $image_default,
+            'title' => !empty($seoTwitter['title']) ? $seoTwitter['title'] : $titleDefault,
+            'description' => !empty($seoTwitter['description']) ? $seoTwitter['description'] : $descriptionDefault,
+            'image' => !empty($seoTwitterImage) ? $seoTwitterImage : $image_default,
         ],
-        'permalink' => $seo_permalink,
-        'type' => $seo_type
+        'permalink' => $seoPermalink,
+        'type' => $seoType
     ];
 ?>
 <!DOCTYPE html>
