@@ -64,11 +64,25 @@ Username: root <br>
 Password: secret
 
 # Wordpress 
-Url Development: http://localhost:3001 <br>
-Url Staging: https://hallan.com.br<br>
-Url Production: https://hallan.com.br<br>
+Url: http://localhost:3001 <br>
 Username: <br> 
 Password: <br> 
+Password Access Site Url: neoplan
+
+# Staging
+Url: https://staging.production.com.br<br>
+DB Host: localhost<br> 
+DB Name: <br>
+DB Username: <br> 
+DB Password: <br> 
+Password Access Site Url: neoplan
+
+# Production
+Url: https://production.com.br<br>
+DB Host: localhost<br> 
+DB Name: <br>
+DB Username: <br> 
+DB Password: <br>
 
 # Gmail - No Reploy and Analytics and Tag manager
 Username: <br>
@@ -97,7 +111,7 @@ FTP_STAGING_DEPLOY_ENV: INSERT ALL LINES FROM .env
 ### To Install Using Duplicator
 1. Place the files in the root directory of the domain on the server.
 2. Append the installer name to the domain URL. Example:  
-   `https://agencianeoplan.com.br/18112024_positiva_d93b86c7197b86e58019_20241118201454_installer.php`
+   `https://sitedomainproduction.com.br/18112024_sitedomainproduction_d93b86c7197b86e58019_20241118201454_installer.php`
 3. Follow the installer steps and provide the database credentials.
 
 ### Required Knowledge for Development and Running the Project

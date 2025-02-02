@@ -32,8 +32,14 @@
     "sass": "^1.59.3"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@rollup/plugin-inject": "^5.0.5",
+    "@rollup/plugin-legacy": "^3.0.2",
     "animate.css": "^4.1.1",
+    "bootstrap": "^5.3.3",
     "imask": "^7.6.1",
+    "jquery": "^3.7.1",
+    "owl.carousel": "^2.3.4",
     "toastify-js": "^1.12.0",
     "wow.js": "^1.2.2"
   }

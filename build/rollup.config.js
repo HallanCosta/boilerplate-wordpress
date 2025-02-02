@@ -8,6 +8,7 @@ import browsersync from "rollup-plugin-browsersync";
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import json from '@rollup/plugin-json';
+import inject from '@rollup/plugin-inject';
 
 const port = 12345;
 
@@ -21,12 +22,24 @@ export default {
   input: 'src/js/index.js',
   output: {
     file: path.resolve(__dirname, "../src/wp-content/themes/wpapp/bundle.js"),
-    format: 'umd',
+    format: 'iife',
+    globals: {
+      jquery: '$', // Define jQuery como uma variável global
+      '@popperjs/core': 'Popper', // Popper.js como global
+    },
   },
   plugins: [
     json(),
     resolve(),
     commonjs(),
+    inject({
+      $: 'jquery', // Injeta jQuery como $
+      jQuery: 'jquery', // Injeta jQuery como jQuery
+      Popper: '@popperjs/core', // Injeta Popper.js como Popper
+      'window.jQuery': 'jquery',
+      'window.$': 'jquery',
+      // 'window.Popper': '@popperjs/core',
+    }),
     terser(),
     browsersync({
       proxy: proxy[environment],

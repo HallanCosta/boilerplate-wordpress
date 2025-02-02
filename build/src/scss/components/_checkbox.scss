@@ -8,12 +8,12 @@
   position: relative;
 
   &.error {
-    .message-error {
-      display: block;
-      margin-top: 10px;
-      color: $error;
-      font-size: 12px;
-    }
+    // .message-error {
+    //   display: block;
+    //   margin-top: 10px;
+    //   color: $error;
+    //   font-size: 12px;
+    // }
 
     .checkmark {
       border-color: $error;

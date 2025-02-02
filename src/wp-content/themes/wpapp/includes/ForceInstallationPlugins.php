@@ -47,6 +47,16 @@ function check_required_plugins() {
       'install_url' => wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=nitropack' ), 'install-plugin_nitropack' ),
       'activate_url' => wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=nitropack/main.php' ), 'activate-plugin_nitropack/main.php' )
     ],
+    'password-protected/password-protected.php' => [
+      'name' => 'Password Protected',
+      'install_url' => wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=password-protected' ), 'install-plugin_password-protected' ),
+      'activate_url' => wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=password-protected/password-protected.php' ), 'activate-plugin_password-protected/password-protected.php' )
+    ],
+    'wps-hide-login/wps-hide-login.php' => [
+      'name' => 'WPS Hide Login',
+      'install_url' => wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=wps-hide-login' ), 'install-plugin_wps-hide-login' ),
+      'activate_url' => wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=wps-hide-login/wps-hide-login.php' ), 'activate-plugin_wps-hide-login/wps-hide-login.php' )
+    ],
   ];
 
   foreach ( $plugins_to_check as $plugin_file => $plugin_data ) {

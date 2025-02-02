@@ -2,9 +2,12 @@
 
 require_once __DIR__ . '/adapter.php'; 
 
-$rwmbMeta = [];
+$rwmbMetaFields = [];
 
-$rwmbMeta[] = FormContactModel::getRWMBMetaFields();
-$rwmbMeta[] = FormLeadModel::getRWMBMetaFields();
+// $rwmbMetaFields[] = FormContactModel::getRWMBMetaFields();
+// $rwmbMetaFields[] = FormLeadModel::getRWMBMetaFields();
+$rwmbMetaFields[] = $formHallan->getRWMBMetaFields();
+$rwmbMetaFields[] = $formContact->getRWMBMetaFields();
+$rwmbMetaFields[] = $formLead->getRWMBMetaFields();
 
-RWMBMetaBoxAdapter::run($rwmbMeta);
+RWMBMetaBoxAdapter::run($rwmbMetaFields);

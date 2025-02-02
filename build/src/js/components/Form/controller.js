@@ -1,25 +1,29 @@
-import Alert from "@root/utils/alert";
+import Alert from "@root/utils/Alert";
+import { apiUrl } from "@root/utils/Endpoints";
 
-export default class FormContactController {
-  formContactView = null;
+export default class FormController {
+  // Dependences 
+  formView = null;
+
+  // Attributes
+  endpoint = null;
 
   constructor(props) {
-    console.log('> FormContactController');
-    this.formContactView = props.formContactView;
+    console.log('> FormController');
+    this.formView = props.formView;
+    this.endpoint = props.endpoint;
 
-    this.formContactView.handleFormContact(this.onSubmitForm.bind(this));
+    this.formView.handleForm(this.onSubmitForm.bind(this));
   }
 
   async onSubmitForm(formData) {
     try {
-      const baseURL = window.origin;
-
       Alert({
         title: 'Enviando os dados...',
         color: 'gray'
       });
 
-      const response = await fetch(`${baseURL}/wp-json/form-contact/register`, {
+      const response = await fetch(`${apiUrl}/${this.endpoint}`, {
         method: 'POST',
         body: formData,
       });
@@ -33,7 +37,7 @@ export default class FormContactController {
         color: "success"
       });
 
-      this.formContactView.cleanFormContact();
+      this.formView.cleanForm();
     
       const data = await response.json();
       return response.ok;

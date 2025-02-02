@@ -27,3 +27,4 @@ src/wp-includes
 # Others
 *.log
 .env
+news-implementations

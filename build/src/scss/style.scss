@@ -31,12 +31,14 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @import 'layout/footer';
 
 // Components
-@import 'components/container';
-@import 'components/section';
+// @import 'components/container';
+// @import 'components/section';
 @import 'components/alert';
 @import 'components/box-invisible';
 @import 'components/checkbox';
-@import 'components/contact-form';
+@import 'components/form';
+@import 'components/form-comment';
+@import 'components/comment-item';
 
 // Pages
 @import 'pages/home/form-section';

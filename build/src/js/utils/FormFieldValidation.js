@@ -1,15 +1,22 @@
-import Alert from "@root/utils/alert";
+// Estrutura para funciona
+//
+// input.name
+// span.message-error
+// 
+// Campo message-error precisa estar logo abaixo do input text
+
+import Alert from "@root/utils/Alert";
 
 export const ERROR = {
   alert: 1,
   field: 2
 };
 
-export default class FormContactValidation {
+export default class FormFieldValidation {
   typeError = null;
 
   constructor(props) {
-    console.log('> FormContactValidation')
+    console.log('> FormFieldValidation')
 
     this.typeError = props.typeError
   }
@@ -80,7 +87,7 @@ export default class FormContactValidation {
     element,
     message = '',
     min,
-    max,
+    max = 9999,
   }) {
     const length = element.value.length;
     const isValid = length >= min && length <= max;

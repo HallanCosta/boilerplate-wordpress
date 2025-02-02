@@ -3,6 +3,72 @@ define( 'WP_CACHE', true /* Modified by NitroPack */ );
 
 require_once ABSPATH . 'wp-env.php';
 
+// // Define a variável com a URL do site
+// $urldosite = 'http://localhost:3002';
+
+// // Caminho para o arquivo de rastreamento
+// $urlTrackerFile = __DIR__ . '/wp-url-tracker.php';
+
+// // Carregue a URL anterior do arquivo
+// if (!file_exists($urlTrackerFile)) {
+// 	file_put_contents($urlTrackerFile, "<?php\nreturn ['previous_url' => '$urldosite'];\n");
+// }
+
+// $urlTracker = include $urlTrackerFile;
+// $previousUrl = $urlTracker['previous_url'];
+
+// // Verifique se a URL foi alterada
+// if ($urldosite !== $previousUrl) {
+// 	// Configurações do banco de dados
+// 	$dsn = 'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'] . ';charset=' . $_ENV['DB_CHARSET'];
+// 	$dbUser = $_ENV['DB_USER'];
+// 	$dbPass = $_ENV['DB_PASSWORD'];
+
+
+// 		// var_dump([$dsn]);
+// 		// Conectar ao banco de dados usando PDO
+// 		$pdo = new PDO($dsn, $dbUser, $dbPass, [
+// 			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+// 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+// 		]);
+
+// 			// Queries para atualizar as URLs
+// 			$queries = [
+// 					"UPDATE wp_posts SET guid = REPLACE(guid, :previousUrl, :newUrl) WHERE guid LIKE :likePreviousUrl",
+// 					"UPDATE wp_posts SET post_content = REPLACE(post_content, :previousUrl, :newUrl) WHERE post_content LIKE :likePreviousUrl",
+// 					"UPDATE wp_options SET option_value = REPLACE(option_value, :previousUrl, :newUrl) WHERE option_value LIKE :likePreviousUrl",
+// 					"UPDATE wp_users SET user_url = REPLACE(user_url, :previousUrl, :newUrl) WHERE user_url LIKE :likePreviousUrl",
+// 			];
+
+// 			// Executa cada query
+// 			// foreach ($queries as $query) {
+// 			// 		$stmt = $pdo->prepare($query);
+// 			// 		$stmt->execute([
+// 			// 				':previousUrl' => $previousUrl,
+// 			// 				':newUrl' => $urldosite,
+// 			// 				':likePreviousUrl' => '%' . $previousUrl . '%',
+// 			// 		]);
+// 			// }
+
+// 			// Atualize o arquivo de rastreamento com a nova URL
+// 			// $newTrackerContent = "<?php\nreturn ['previous_url' => '$urldosite'];\n";
+// 			// file_put_contents($urlTrackerFile, $newTrackerContent);
+
+// 	// try {
+	
+
+// 	// } catch (PDOException $e) {
+// 	// 		// Log de erro
+// 	// 		error_log('Erro na conexão ou execução da query: ' . $e->getMessage());
+// 	// 		die('Erro ao atualizar URLs no banco de dados. Consulte o log para mais detalhes.');
+// 	// }
+// }
+
+
+
+
+
+
 // a helper function to lookup "env_FILE", "env", then fallback
 if (!function_exists('getenv_docker')) {
 	// https://github.com/docker-library/wordpress/issues/588 (WP-CLI will load this file 2x)

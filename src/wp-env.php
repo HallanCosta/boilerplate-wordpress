@@ -117,3 +117,10 @@ foreach ($required_envs as $required_env) {
 }
 
 // The script will continue if all required credentials are found in the .env file
+
+// Access variables environment
+// $_ENV['BASE_URL']
+// $_ENV['DB_HOST']
+// $_ENV['DB_NAME']
+// $_ENV['DB_USER']
+// $_ENV['DB_PASSWORD']

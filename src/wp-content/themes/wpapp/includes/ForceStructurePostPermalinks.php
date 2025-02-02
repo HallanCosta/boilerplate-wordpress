@@ -1,6 +1,6 @@
 <?php
 
-function set_custom_structure_permalinks() {
+function setStructurePermalinks() {
   // Define uma estrutura de permalink personalizada
   update_option('permalink_structure', '/blog/%postname%/'); // Altere para a estrutura desejada
 
@@ -9,4 +9,4 @@ function set_custom_structure_permalinks() {
 }
 
 // Adiciona a função ao gancho 'init' para que seja executada ao iniciar o WordPress
-add_action('init', 'set_custom_structure_permalinks');
+add_action('init', 'setStructurePermalinks');

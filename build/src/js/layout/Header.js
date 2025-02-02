@@ -1,9 +1,9 @@
-import 'animate.css';
-
 import WOW from 'wow.js';
-import Nitropack from '@root/components/nitropack';
 
-import FormMask from '@root/utils/form-mask';
+import Nitropack from '@root/components/Nitropack';
+import OwlCarousel from '@root/components/OwlCarousel';
+
+import FormMask from '@root/utils/FormMask';
 
 class Header {
   constructor() {}
@@ -11,7 +11,7 @@ class Header {
   run() { 
     console.log('> Header'); 
     
-    // Inicia o WOW para animações
+    // Start the WOW.js to animations
     new WOW().init();
 
     const formMask = new FormMask;
@@ -30,11 +30,15 @@ class Header {
       formMask.cnpj(cnpj);  
     });
 
-    /**
-    * Nitropack remove watermark
-    */
+    //
+    // Nitropack remove watermark
     const nitropack = new Nitropack();
     nitropack.run();
+
+    //
+    // OwlCarousel - all carousel website 
+    const owlCarousel = new OwlCarousel();
+    owlCarousel.run();
   }
 }
 

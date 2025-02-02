@@ -1,0 +1,80 @@
+
+
+.form-box {
+	padding: 40px;
+	border-radius: 16px;
+
+	display: flex;
+	flex-direction: column;
+
+	border: $border;
+
+	.form-header {		
+		h1 {
+			font: $font-bold-title-medium;
+			color: $secondary;
+			line-height: 38.4px;
+		}
+	}
+
+	textarea,
+	input,
+	select {
+		border: $border-input;
+		border-radius: $border-radius-input;
+		padding: $padding-input;
+		width: 100%;
+		background: white;
+
+		&::placeholder {
+			color: black;
+		}
+	}
+
+	select {
+		appearance: none;
+		-webkit-appearance: none; 
+		-moz-appearance: none; 
+
+		background-image: url($path_images + 'select-icon.png'); /* Adicione o caminho para o seu ícone personalizado */
+		background-repeat: no-repeat;
+		background-position: 92% 50%;
+	}
+
+	// Error
+	// &.error {
+	// 	textarea,
+	// 	input,
+	// 	select {
+	// 		border-color: $error;
+	// 	}
+
+	// 	.message-error {
+	// 		color: $error;
+	// 		margin-top: 8px;
+	// 		display: block;
+	// 		text-align: left;
+	// 		font-size: 12px;
+	// 	}
+	// }
+}
+
+.form-footer {
+	button {
+		background-color: $secondary;
+		border: 0;
+		padding: 16px 32px;
+		border-radius: 33px;
+		font: $font-bold-title-medium;
+		font-size: 16px;
+		color: white;
+		width: 100%;
+
+		cursor: pointer;
+		transition: all 300ms ease;
+
+		&:hover {
+			filter: brightness(95%);
+		}
+	}
+}

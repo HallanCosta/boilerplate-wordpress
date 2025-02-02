@@ -11,20 +11,19 @@ class FormNotificationModel {
   public static $out = [];
   public static $submenu;
 
-  public function __construct() {
+  public static function run() {
     self::$recipients[] = 'hallan.costa1.backup@gmail.com'; // Fallback
     self::$postType = self::$cptNameSingular; // Fallback
-    self::addRecipients();
-  }
 
-  public function run() {
+    self::addRecipients();
+
     add_action('admin_menu', [__CLASS__, 'createMenu']);
     add_action('admin_init', [__CLASS__, 'notificationRegister']);
     add_action('admin_head', [__CLASS__, 'styles']);
   }
 
   public static function notificationRegister() {
-    register_setting( 'cs-notifications-settings', 'form_' . self::$cptNameSingular );
+    register_setting( 'cs-notifications-settings', 'form_' . self::$postType );
   }
 
   public static function createMenu() {
@@ -35,7 +34,7 @@ class FormNotificationModel {
       'Formulários',
       'read_' . self::$cptNamePlural, // Nível de permissão necessário para acessar
       self::$menuSlug, // Cria menu Formulários - slug do menu pai
-      'edit.php?post_type=' . self::$cptNameSingular, // Função de callback para renderizar o conteúdo
+      'edit.php?post_type=' . self::$postType, // Função de callback para renderizar o conteúdo
       'dashicons-buddicons-pm', // Ícone do menu (veja a lista de ícones no Codex)
       6 // Posição do menu (use um número alto para colocá-lo no final)
     );
@@ -61,9 +60,9 @@ class FormNotificationModel {
   }
 
   public static function recipientsNotificationHtml() {
-    $form_contact = esc_attr( get_option('form_' . self::$cptNameSingular) );
+    $formCpt = esc_attr( get_option('form_' . self::$postType) );
 
-    $formNotification = 'form_' . self::$cptNameSingular;
+    $formNotification = 'form_' . self::$postType;
 
     echo <<<HEREDOC
 <div class="wrap">
@@ -77,7 +76,7 @@ HEREDOC;
         <table class="form-table">
           <tr valign="top">
           <th scope="row">Notificação:<br><span style="display: inline-block;font-size: 13px;font-weight: 500;padding-top: 7px;color: #888">Informe os e-mails que vão receber o formulário.</span></th>
-          <td><textarea name="$formNotification" style="width: 100%; min-height: 150px" placeholder="Exemplo:\nteste1@email.com.br\nteste2@email.com.br">{$form_contact}</textarea></td>
+          <td><textarea name="$formNotification" style="width: 100%; min-height: 150px" placeholder="Exemplo:\nteste1@email.com.br\nteste2@email.com.br">{$formCpt}</textarea></td>
           </tr>
         </table>
 HEREDOC;
@@ -89,10 +88,10 @@ HEREDOC;
   }
 
   public static function addRecipients() {    
-    $formContact = get_option('form_' . self::$cptNameSingular);
+    $formCpt = get_option('form_' . self::$postType);
     
-    if ($formContact) {
-      $tempEmails = esc_attr( $formContact );
+    if ($formCpt) {
+      $tempEmails = esc_attr( $formCpt );
       $emails = [];
       $mtemp = array_map('trim', explode("\n", $tempEmails));
       foreach ($mtemp as $uemail) {
