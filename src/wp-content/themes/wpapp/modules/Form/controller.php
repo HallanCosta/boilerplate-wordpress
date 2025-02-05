@@ -1,20 +1,16 @@
 <?php 
 class FormController extends WP_REST_Controller {
-  public $formModel;
+  public FormModel $formModel;
   
   public function __construct($formModel) {
     $this->formModel = $formModel;
   }
 
-  public static function createInstance($formModel) {
-    return new self($formModel);
-  }
-
   public function registerRoutes() {
-    register_rest_route('wp-base-camp/v1', $this->formModel->route, [
+    register_rest_route('wp-base-camp', $this->formModel->route, [
       'methods' => 'POST',
       'callback' => function() {
-        return FormController::save($this->formModel->data);
+        return $this->save($this->formModel->data);
       },
     ]);
   }

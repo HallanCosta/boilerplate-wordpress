@@ -1,11 +1,10 @@
 <?php 
-
 class FormNotificationController extends WP_REST_Controller {
   public static function run() {
-    self::registerRoutes(FormNotificationModel::$postType);
+    self::registerRoutes();
   }
 
-  public static function registerRoutes($baseEndpoint) {
+  public static function registerRoutes() {
     register_rest_route('wp-base-camp/v1', 'form/notification', [
       'methods' => 'POST',
       'callback' => [__CLASS__, 'save'],

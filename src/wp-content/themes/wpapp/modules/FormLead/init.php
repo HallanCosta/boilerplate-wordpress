@@ -1,5 +1,5 @@
 <?php
-$formLead = FormModel::createInstace([
+$formLead = new FormModel([
   'cptTitleSingular' => 'Formulário Lead',
   'cptTitlePlural' => 'Formulário Leads',
   'cptNameSingular' => 'form-lead',
@@ -80,5 +80,5 @@ $formLead = FormModel::createInstace([
 $formLead->run();
 
 add_action('rest_api_init', function() use($formLead) {
-  FormController::createInstance($formLead);
+  new FormController($formLead);
 });

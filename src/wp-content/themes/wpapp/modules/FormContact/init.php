@@ -1,5 +1,5 @@
 <?php
-$formContact = FormModel::createInstace([
+$formContact = new FormModel([
   'cptTitleSingular' => 'Formulário Contact',
   'cptTitlePlural' => 'Formulário Contacts',
   'cptNameSingular' => 'form-contact',
@@ -80,5 +80,5 @@ $formContact = FormModel::createInstace([
 $formContact->run();
 
 add_action('rest_api_init', function() use($formContact) {
-  FormController::createInstance($formContact);
+  new FormController($formContact);
 });

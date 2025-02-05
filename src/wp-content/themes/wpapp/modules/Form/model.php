@@ -37,10 +37,6 @@ class FormModel {
     $this->postType = $this->cptNameSingular;
   }
 
-  public static function createInstace($args) {
-    return new self($args);
-  }
-
   public function run() {
     add_action('init', function() {
       $this->addCapabilitiesAdmin();

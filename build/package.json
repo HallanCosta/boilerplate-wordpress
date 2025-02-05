@@ -4,9 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
-    "watch:docker": "rollup -c --watch --bundleConfigAsCjs --environment NODE_ENV:docker",
-    "watch:dev": "rollup -c --watch --bundleConfigAsCjs --environment NODE_ENV:dev"
+    "build": "rollup -c --bundleConfigAsCjs --environment APP_ENV:production",
+    "watch:docker": "rollup -c --watch --bundleConfigAsCjs --environment APP_ENV:docker",
+    "watch:dev": "rollup -c --watch --bundleConfigAsCjs --environment APP_ENV:dev"
   },
   "keywords": [],
   "author": "",
