@@ -154,7 +154,9 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
  */
 
-if ($_SERVER['HTTPS'] === 'on') {  
+ // How to prevent WordPress not loading CSS over HTTPS issue?
+ // https://www.malcare.com/blog/wordpress-not-loading-css-over-https/
+ if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {  
   $_SERVER['HTTPS'] = 'on';
 } else {
   $_SERVER['HTTPS'] = 'off';

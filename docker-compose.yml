@@ -11,12 +11,17 @@ services:
       '--sql-mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION',
       '--log_bin_trust_function_creators=1'
     ]
-    restart: always
     environment:
       MYSQL_DATABASE: wpapp 
       MYSQL_ROOT_PASSWORD: secret
     ports:
       - 33066:3306
+    restart: always
+    healthcheck:
+      test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD' ]
+      timeout: 5s
+      interval: 5s
+      retries: 3
     volumes:
       - ./.docker/mysql:/var/lib/mysql
       # - ./docker-database.sql:/docker-entrypoint-initdb.d/init.sql
@@ -40,15 +45,16 @@ services:
 
   wordpress:
     container_name: wpapp-wordpress
+    restart: always
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     image: wordpress:6.6.1-php8.3
     ports:
       - 3001:80
     volumes:
       - ./src:/var/www/html/
       - ./php.ini:/usr/local/etc/php/php.ini
-    restart: always
     networks:
       - wpapp-network
     extra_hosts:
