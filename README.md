@@ -106,6 +106,15 @@ FTP_STAGING_PROJECT_DIR: domains/hallan.com.br/public_html/
 FTP_STAGING_DEPLOY_ENV: INSERT ALL LINES FROM .env
 ```
 
+# Deploy CI/CD with Github CLI
+```
+# Run a pipeline on the main branch (Production)
+gh workflow run main.yml --ref main
+
+# View run pipelines:
+gh run list --workflow=main.yml
+```
+
 # Duplicator
 
 ### To Install Using Duplicator

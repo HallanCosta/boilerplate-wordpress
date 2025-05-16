@@ -4,88 +4,65 @@
 .box-invisible-medium { width:100%; padding:40px 0px; display:block; }
 .box-invisible-large { width:100%; padding:55px 0px; display:block; }
 
-.box-invisible-small,
-.box-invisible,
-.box-invisible-normal,
-.box-invisible-medium,
-.box-invisible-large { 
-  &.hidden-desktopLarge {
-    display: none;
-  }
-}
 
 .box-invisible-small,
 .box-invisible,
 .box-invisible-normal,
 .box-invisible-medium,
 .box-invisible-large { 
-  &.show-desktop,
-  &.show-laptop,
-  &.show-tablet, 
-  &.show-mobile {
+  .hidden {
     display: none;
   }
-}
 
-@include for-size(desktop) {
-  .box-invisible-small,
-  .box-invisible,
-  .box-invisible-normal,
-  .box-invisible-medium,
-  .box-invisible-large {
-    &.hidden-desktop {
+  .show {
+    display: block!important;
+  }
+
+  @include xxl {
+    &.hidden-xxl {
       display: none;
     }
 
-    &.show-desktop {
+    &.show-xxl {
       display: block!important;
     }
   }
-}
-
-@include for-size(laptop) {
-  .box-invisible-small,
-  .box-invisible,
-  .box-invisible-normal,
-  .box-invisible-medium,
-  .box-invisible-large {
-    &.hidden-laptop {
+  @include xl {
+    &.hidden-xl {
       display: none;
     }
-
-    &.show-laptop {
+  
+    &.show-xl {
       display: block!important;
     }
   }
-}
-
-@include for-size(tablet) {
-  .box-invisible-small,
-  .box-invisible,
-  .box-invisible-normal,
-  .box-invisible-medium,
-  .box-invisible-large {
-    &.hidden-tablet {
+  
+  @include lg {
+    &.hidden-lg {
       display: none;
     }
-
-    &.show-tablet {
+  
+    &.show-lg {
       display: block!important;
     }
   }
-}
-
-@include for-size(mobile) {
-  .box-invisible-small,
-  .box-invisible,
-  .box-invisible-normal,
-  .box-invisible-medium,
-  .box-invisible-large {
-    &.hidden-mobile {
+  
+  @include md {
+    &.hidden-md {
       display: none;
     }
-
-    &.show-mobile {
+  
+    &.show-md {
+      display: block!important;
+    }
+  }
+  
+  @include sm {
+    &.hidden-sm {
+      display: none;
+    }
+  
+    &.show-sm {
       display: block!important;
     }
   }

@@ -1,14 +1,60 @@
-@mixin for-size($size)
-{
-  @if $size == mobile {
-    @media (max-width: 600px) { @content; }
-  } @else if $size == tablet {
-    @media (max-width: 768px) { @content; }
-  } @else if $size == laptop {
-    @media (max-width: 1024px) { @content; }
-  } @else if $size == desktop {
-    @media (max-width: 1200px) { @content; }
-  } @else if $size == desktopLarge {
-    @media (max-width: 1690px) { @content; }
+// Bootstrap 5 Breakpoints
+$breakpoints: (
+  'xs': 0,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px
+);
+
+// Media Query Mixins
+@mixin for-size($size) {
+  @if map-has-key($breakpoints, $size) {
+    @media (max-width: map-get($breakpoints, $size)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$size}`. "
+      + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+// Usage examples:
+// @include for-size('xs') { ... }     // 0
+// @include for-size('sm') { ... }     // 576px
+// @include for-size('md') { ... }     // 768px
+// @include for-size('lg') { ... }     // 992px
+// @include for-size('xl') { ... }     // 1200px
+// @include for-size('xxl') { ... }    // 1400px
+
+// Alias for common names (for backward compatibility)
+@mixin sm {
+  @include for-size('sm') {
+      @content;
+  }
+}
+
+@mixin md {
+  @include for-size('md') {
+      @content;
+  }
+}
+
+@mixin lg {
+  @include for-size('lg') {
+      @content;
+  }
+}
+
+@mixin xl {
+  @include for-size('xl') {
+      @content;
+  }
+}
+
+@mixin xxl {
+  @include for-size('xxl') {
+      @content;
   }
 }
