@@ -4,7 +4,7 @@ export default class OwlCarousel {
   run() {
     console.log('> Owl Carousel');
 
-    $('.wpapp-custom-owl-carousel').owlCarousel({
+    $('.wpresskit-custom-owl-carousel').owlCarousel({
       loop:true,
       margin:10,
       nav:true,

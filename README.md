@@ -49,10 +49,10 @@ Change the environment variables according to each project environment
 Somes plugins pro for developmet in builder or code programmatically
 
 #### Folder ./build
-Used to create a custom theme that goes in the wordpress themes folder and wpapp 
+Used to create a custom theme that goes in the wordpress themes folder and wpresskit 
 
 #### How to code a new project
-1. Search and change the name of every place that has <b>"wpapp"</b> to the <b>new name</b>, for example <b>"apple"</b>
+1. Search and change the name of every place that has <b>"wpresskit"</b> to the <b>new name</b>, for example <b>"apple"</b>
 2. Turn off the build in docker and, if necessary, delete ./docker/mysql to run the configuration again with the new name in containers, variables and the theme
 
 #### Access live reload

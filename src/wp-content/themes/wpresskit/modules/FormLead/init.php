@@ -11,10 +11,10 @@ $formLead = FormModel::createInstace([
   'cptNotFound' => 'Nenhum Lead encontrado',
   'cptDescription' => 'Inscritos através do formulário Lead',
 
-  'emailSubject' => 'Site WP APP - Lead',
+  'emailSubject' => 'Site WPressKit - Lead',
 
   'data' => $_POST,
-  'route' => 'form/lead', // http://localhost:3001/wp-json/wp-base-camp/form/lead
+  'route' => 'form/lead', // http://localhost:3001/wp-json/wpresskit/v1/form/lead
 
   'fields' => [
     [
@@ -80,5 +80,5 @@ $formLead = FormModel::createInstace([
 $formLead->run();
 
 add_action('rest_api_init', function() use($formLead) {
-  FormController::createInstance($formLead);
+  FormController::createInstance($formLead)->registerRoutes();
 });

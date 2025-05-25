@@ -1,6 +1,6 @@
 services:
   db:
-    container_name: wpapp-mysql
+    container_name: wpresskit-mysql
     image: mysql:5.7
     command: [
       'mysqld',
@@ -13,7 +13,7 @@ services:
     ]
     restart: always
     environment:
-      MYSQL_DATABASE: wpapp 
+      MYSQL_DATABASE: wpresskit 
       MYSQL_ROOT_PASSWORD: secret
     ports:
       - 33066:3306
@@ -21,12 +21,12 @@ services:
       - ./.docker/mysql:/var/lib/mysql
       # - ./docker-database.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - wpapp-network
+      - wpresskit-network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
   phpmyadmin:
-    container_name: wpapp-phpmyadmin
+    container_name: wpresskit-phpmyadmin
     image: phpmyadmin/phpmyadmin
     ports:
       - 8080:80
@@ -34,12 +34,12 @@ services:
       PMA_HOST: db
       UPLOAD_LIMIT: 200M
     networks:
-      - wpapp-network
+      - wpresskit-network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
   wordpress:
-    container_name: wpapp-wordpress
+    container_name: wpresskit-wordpress
     depends_on:
       - db
     image: wordpress:6.6.1-php8.3
@@ -50,12 +50,12 @@ services:
       - ./php.ini:/usr/local/etc/php/php.ini
     restart: always
     networks:
-      - wpapp-network
+      - wpresskit-network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
   ngrok:
-    container_name: wpapp-ngrok
+    container_name: wpresskit-ngrok
     image: ngrok/ngrok:latest
     restart: unless-stopped
     command:
@@ -68,14 +68,14 @@ services:
     ports:
       - 4551:4040
     networks:
-      - wpapp-network
+      - wpresskit-network
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
       - wordpress
 
 networks:
-  wpapp-network:
+  wpresskit-network:
     driver: bridge
 
 volumes:

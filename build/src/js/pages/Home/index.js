@@ -32,10 +32,11 @@ export default class Home {
           { validationType: 'length', element: zipcode, min: 9, max: 9, message: 'Insira um CEP válido' },
           { validationType: 'length', element: message, min: 8, max: 2048, message: 'Insira no mínimo 8 caracteres' },
           { validationType: 'checked', element: policy, message: 'Você precisa aceitar os termos de política de privacidade' }
-        ]
+        ],
+        policyField: $('.checkbox[for="policy"]')
       },
       controller: {
-        endpoint: 'form-contact/register'
+        endpoint: 'wpresskit/v1/form/contact'
       }
     });
     form.run();

@@ -11,10 +11,10 @@ $formContact = FormModel::createInstace([
   'cptNotFound' => 'Nenhum Contact encontrado',
   'cptDescription' => 'Inscritos através do formulário Contact',
 
-  'emailSubject' => 'Site WP APP - Contact',
+  'emailSubject' => 'Site WPressKit - Contact',
 
   'data' => $_POST,
-  'route' => 'form/contact', // http://localhost:3001/wp-json/wp-base-camp/form/contact
+  'route' => 'form/contact', // http://localhost:3001/wp-json/wpresskit/v1/form/contact
 
   'fields' => [
     [
@@ -80,5 +80,5 @@ $formContact = FormModel::createInstace([
 $formContact->run();
 
 add_action('rest_api_init', function() use($formContact) {
-  FormController::createInstance($formContact);
+  FormController::createInstance($formContact)->registerRoutes();
 });

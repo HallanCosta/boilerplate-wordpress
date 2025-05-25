@@ -6,14 +6,14 @@ class FormNotificationController extends WP_REST_Controller {
   }
 
   public static function registerRoutes($baseEndpoint) {
-    register_rest_route('wp-base-camp/v1', 'form/notification', [
+    register_rest_route('wpresskit/v1', 'form/notification', [
       'methods' => 'POST',
       'callback' => [__CLASS__, 'save'],
-    ]); // http://localhost:3001/wp-json/wp-base-camp/v1/form/notification
+    ]); // http://localhost:3001/wp-json/wpresskit/v1/form/notification
   }
 
   public static function save() {
-    $subject = 'Notificação - Independente';
+    $subject = 'WPressKit - Notificação - Independente';
     $mailResponse = EmailService::sendMail(
       $subject,
       FormNotificationModel::templateEmail($subject, $_POST), 

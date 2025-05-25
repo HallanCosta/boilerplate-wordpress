@@ -2,7 +2,7 @@
 function getTheme($file, $vers = '') {
   $base_url = home_url();
   $vers = ($vers != "") ? "?{$vers}" : "";
-  return "{$base_url}/wp-content/themes/wpapp/{$file}{$vers}";
+  return "{$base_url}/wp-content/themes/wpresskit/{$file}{$vers}";
 }
 
 function getBaseUrl($slug = "") {

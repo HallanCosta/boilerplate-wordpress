@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "rollup -c --bundleConfigAsCjs --environment NODE_ENV:production",
     "watch:docker": "rollup -c --watch --bundleConfigAsCjs --environment NODE_ENV:docker",
     "watch:dev": "rollup -c --watch --bundleConfigAsCjs --environment NODE_ENV:dev"
   },

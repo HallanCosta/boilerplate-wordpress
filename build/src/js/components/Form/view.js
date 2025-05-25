@@ -5,13 +5,30 @@ export default class FormView {
   // Attributes
   form = null;
   fields = [];
+  $policyField = null;
 
   constructor(props) {
     console.log('> FormView', props);
     this.form = props.form;
     this.fields = props.fields;
-
+    
     this.formValidation = props.formValidation;
+    
+    this.$policyField = props.policyField;
+
+    this._toggleAcceptPolicy();
+  }
+
+  _toggleAcceptPolicy() {
+    let isAccept = false;
+    $(this.$policyField).on('click', function (e) {
+      e.preventDefault(); // evita comportamento padrão se necessário
+      
+      isAccept = !isAccept
+
+      $(this).toggleClass('active');
+      $(this).find('input[name="policy"]').prop('checked', isAccept);
+    });
   }
 
   cleanForm() {
@@ -37,7 +54,7 @@ export default class FormView {
           return this.formValidation.isValidRegex(field);
         } else if (field.validationType === this.formValidation.validationType.length) {
           return this.formValidation.isValidLength(field);
-        } else if (field.validationType === this.formValidation.validationType.checked) {
+        } else if (field.validationType === this.formValidation.validationType.checked) {          
           return this.formValidation.isValidChecked(field);
         } else if (field.validationType === this.formValidation.validationType.selected) {
           return this.formValidation.isSelected(field);

@@ -48,7 +48,7 @@
 
 				<div class="col-lg-12 mt-4">
 					<label class="checkbox" for="policy">
-						<input class="hidden" type="checkbox" name="policy" id="policy">
+						<input class="hidden" type="checkbox" name="policy" id="policy" policy>
 						<div class="row">
 							<div class="col-lg-12 d-flex align-items-center">
 								<span class="checkmark"></span>

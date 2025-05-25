@@ -15,10 +15,10 @@ $formHallan = FormModel::createInstace([
   'cptNotFound' => 'Nenhum Hállan encontrado',
   'cptDescription' => 'Inscritos através do formulário Hállan',
 
-  'emailSubject' => 'Site WP APP - Hállan',
+  'emailSubject' => 'Site WPressKit - Hállan',
 
   'data' => $_POST,
-  'route' => 'form/hallan', // http://localhost:3001/wp-json/wp-base-camp/form/hallan
+  'route' => 'form/hallan', // http://localhost:3001/wp-json/wpresskit/v1/form/hallan
 
   'fields' => [
     [

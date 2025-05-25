@@ -25,7 +25,7 @@
 	</ul>
 
 	<div class="container">
-		<div class="wpapp-custom-owl-carousel owl-carousel owl-theme">
+		<div class="wpresskit-custom-owl-carousel owl-carousel owl-theme">
 			<div class="col-lg-11">
 				<img src="https://www.4devs.com.br/4devs_gerador_imagem.php?acao=gerar_imagem&txt_largura=400&txt_altura=400&extensao=png&fundo_r=0&fundo_g=0&fundo_b=0&texto_r=0&texto_g=0&texto_b=0&texto=&tamanho_fonte=10" alt="">
 			</div>
