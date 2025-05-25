@@ -6,7 +6,7 @@ production - Used to deploy in production environment<br>
 staging - Used to develop and test in local and deploy staging environment
 
 # Requeriments
-Node: v16 <br>
+Node: v16 <br> 
 
 #### Active mode api of Wordpress 
 Url: http://localhost:3001/wp-admin/options-permalink.php <br>
