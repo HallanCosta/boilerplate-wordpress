@@ -78,7 +78,16 @@ $formHallan = FormModel::createInstace([
       'placeholder' => '',
       'desc' => '',
       'showOnList' => true,
-    ]
+    ],
+    [
+      'id' => 'client_ip',
+      'name' => 'IP do Cliente',
+      'type' => 'text',
+      'placeholder' => '127.0.0.1',
+      'default' => getClientIP(), // Valor padrão 
+      'desc' => '',
+      'showOnList' => true,
+    ],
   ]
 ]);
 $formHallan->run();

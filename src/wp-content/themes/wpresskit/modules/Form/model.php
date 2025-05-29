@@ -242,15 +242,26 @@ class FormModel {
                   </div>
                   ";
                   foreach ($this->fields as $field) {
+                    $value = $data[$field['id']] ?? null;
+
+                    $fieldValue = '';
+                    if ($value === null) {
+                      $fieldValue = $field['default'];
+                    } else if (is_array($value)) {
+                      $fieldValue = implode(', ', $data[$field['id']]);
+                    } else {
+                      $fieldValue = $value;
+                    }
+
                     if ($field['id'] === 'message') {
                       $html .= "<div class='message-box'>";
                       $html .= "  <div class='label'>Mensagem:</div>";
-                      $html .= "  <div style='margin-top: 10px;'>".$data[$field['id']]."</div>";
+                      $html .= "  <div style='margin-top: 10px;'>".$fieldValue."</div>";
                       $html .= "</div>";
                     } else {
                       $html .= "<div class='info-item'>";
                       $html .= "<span class='label'>".$field['name'].":</span>";
-                      $html .= "<span>".$data[$field['id']]."</span>";
+                      $html .= "<span>".$fieldValue."</span>";
                       $html .= "</div>";
                     }
                   }
@@ -343,9 +354,21 @@ class FormModel {
     $data['id'] = $postId;
 
     foreach ($this->fields as $field) {
+      $value = $data[$field['id']] ?? null;
+      
+      $fieldValue = '';
+      if ($value === null) {
+        $fieldValue = $field['default'];
+        $data[$field['id']] = $field['default'];
+      } else if (is_array($value)) {
+        $fieldValue = implode(', ', $value);
+      } else {
+        $fieldValue = $value;
+      }
+      
       // RWMB Metabox
-      rwmb_set_meta( $postId, $field['id'], $data[$field['id']] );
-        
+      rwmb_set_meta( $postId, $field['id'], $fieldValue);
+      
       // ACF
       // update_field($postId, $field['id'], $postId);
     }
