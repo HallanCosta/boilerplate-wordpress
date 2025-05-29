@@ -35,3 +35,13 @@ function convertDateToBrazil($dateOrigin) {
 
   return $dateFormatted;
 }
+
+function getClientIP() {
+  $ip_keys = ['HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR'];
+  foreach ($ip_keys as $key) {
+    if (!empty($_SERVER[$key])) {
+      return $_SERVER[$key];
+    }
+  }
+  return 'IP desconhecido';
+}

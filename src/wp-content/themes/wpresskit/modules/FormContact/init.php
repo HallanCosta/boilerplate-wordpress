@@ -74,7 +74,16 @@ $formContact = FormModel::createInstace([
       'placeholder' => '',
       'desc' => '',
       'showOnList' => true,
-    ]
+    ],
+    [
+      'id' => 'client_ip',
+      'name' => 'IP do Cliente',
+      'type' => 'text',
+      'placeholder' => '127.0.0.1',
+      'default' => getClientIP(), // Valor padrão (OBS: se não tiver valor que vem do $_POST ele vai usar ele valor padrão para o campo não ficar sem nada)
+      'desc' => '',
+      'showOnList' => true,
+    ],
   ]
 ]);
 $formContact->run();
